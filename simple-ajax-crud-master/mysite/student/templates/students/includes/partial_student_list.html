@@ -1,0 +1,31 @@
+{% for student in students %}
+  <tr>
+    <td>{{ student.id }}</td>
+    <td>{{ student.name }}</td>
+    <td>{{ student.roll_no }}</td>
+    <td>{{ student.dob }}</td>
+    <td>{{ student.adhar_number }}</td>
+    <td>{{ student.mobile_number }}</td>
+    <td>{{ student.blood_group }}</td>
+
+    <!--<td>{{ student.photo_upload }}</td>-->
+    <!--<td>{{ student.example_upload }}</td>-->
+
+    <td style="width: 150px">
+      <button type="button"
+              class="btn btn-warning btn-sm js-update-student"
+              data-url="{% url 'student_update' student.id %}">
+        <span class="glyphicon glyphicon-pencil"></span> Edit
+      </button>
+      <button type="button"
+              class="btn btn-danger btn-sm js-delete-student"
+              data-url="{% url 'student_delete' student.id %}">
+        <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+    </td>
+  </tr>
+{% empty %}
+  <tr>
+    <td colspan="8" class="text-center bg-warning">No Student</td>
+  </tr>
+{% endfor %}
